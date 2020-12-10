@@ -1,0 +1,13 @@
+﻿@model Article
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+<section id="main" class="wrapper">
+    <div class="inner">
+        <h1 class="major">@Model.Title</h1>
+        <span class="image fit"><img src="@Model.ThumbnailImage.First().Url" alt="@Model.ThumbnailImage.First().Description" /></span>
+        @Html.Raw( Model.Content)
+    </div>
+</section>

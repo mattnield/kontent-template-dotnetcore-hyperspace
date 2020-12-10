@@ -1,0 +1,34 @@
+﻿@model Home
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+<section id="intro" class="wrapper style1 fullscreen fade-up">
+    <div class="inner">
+        <h1>@Model.Title</h1>
+        @Html.Raw(Model.Teaser)
+        <ul class="actions">
+            <li><a href="#one" class="button scrolly">Learn more</a></li>
+        </ul>
+    </div>
+</section>
+
+@await Component.InvokeAsync("ArticleList", new { articles = Model.PromotedArticle.Where(o => o is
+Article).Cast<Article>() })
+
+<section id="two" class="wrapper style3 fade-up">
+    <div class="inner">
+        <h2>What we do</h2>
+        <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
+            quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit
+            quis lorem.</p>
+
+        @await Component.InvokeAsync("ServiceList", new { services = Model.CoreServices.Select(o => o as
+        Service).Cast<Service>() })
+
+        <ul class="actions">
+            <li><a href="/service" class="button">Learn more</a></li>
+        </ul>
+    </div>
+</section>

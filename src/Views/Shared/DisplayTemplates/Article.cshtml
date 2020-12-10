@@ -1,0 +1,20 @@
+@model Article
+
+@{
+
+    Layout = null;
+    string imageUrl = string.Concat(Model.ThumbnailImage.First().Url, string.Empty);//"?h=438&w=438");
+}
+
+<section>
+    <a href="#" class="image"><img src="@imageUrl" alt="" data-position="center center" /></a>
+    <div class="content">
+        <div class="inner">
+            <h2>@Model.Title</h2>
+            <p>@Model.Summary</p>
+            <ul class="actions">
+                <li><a href="/article/@Model.Slug" class="button">Learn more</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
